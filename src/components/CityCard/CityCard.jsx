@@ -4,23 +4,37 @@ import { convertUnix, sunshineCalculator } from "../../services/timeConverter";
 import roundTemperature from "../../services/roundTemperature";
 
 export default function CityCard({ name }) {
-  const [cityData, setCityData] = useState({});
+  const [cityDataCurrent, setcityDataCurrent] = useState({});
+  const [cityDataForecast, setcityDataForecast] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
+  const currentRequest = fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=${name}&units=metric&lang=fr&appid=${
+      import.meta.env.VITE_APP_ID
+    }`
+  ).then((response) => {
+    if (!response.ok) {
+      throw new Error("Failed to fetch current data");
+    }
+    return response.json();
+  });
+
+  const forecastRequest = fetch(
+    `https://api.openweathermap.org/data/2.5/forecast?q=${name}&units=metric&cnt=8&lang=fr&appid=${
+      import.meta.env.VITE_APP_ID
+    }`
+  ).then((response) => {
+    if (!response.ok) {
+      throw new Error("Failed to fetch forecast data");
+    }
+    return response.json();
+  });
+
   useEffect(() => {
-    fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${name}&units=metric&lang=fr&appid=${
-        import.meta.env.VITE_APP_ID
-      }`
-    )
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
-        return response.json();
-      })
-      .then((cityData) => {
-        setCityData(cityData);
+    Promise.all([currentRequest, forecastRequest])
+      .then(([cityDataCurrent, cityDataForecast]) => {
+        setcityDataCurrent(cityDataCurrent);
+        setcityDataForecast(cityDataForecast);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -33,32 +47,37 @@ export default function CityCard({ name }) {
   ) : (
     <details>
       <summary className="overflow-x-hidden">
-        <strong>{cityData.name}</strong>
+        <strong>{cityDataCurrent.name}</strong>
         <img
-          src={`https://openweathermap.org/img/wn/${cityData.weather[0].icon}@2x.png`}
+          src={`https://openweathermap.org/img/wn/${cityDataCurrent.weather[0].icon}@2x.png`}
           alt=""
         />
         <span className="d-sm-none">
-          | {roundTemperature(cityData.main.temp)} °C
+          | {roundTemperature(cityDataCurrent.main.temp)} °C
         </span>
       </summary>
       <ul>
         <li>
           Conditions météorologiques :{" "}
-          <strong>{cityData.weather[0].description}</strong>.
+          <strong>{cityDataCurrent.weather[0].description}</strong>.
         </li>
         <li>
           Température :{" "}
-          <strong>{roundTemperature(cityData.main.temp)} °C</strong>, minimale :{" "}
-          {roundTemperature(cityData.main.temp_min)}°C, maximale :{" "}
-          {roundTemperature(cityData.main.temp_max)}°C.
+          <strong>{roundTemperature(cityDataCurrent.main.temp)} °C</strong>,
+          minimale : {roundTemperature(cityDataCurrent.main.temp_min)}°C,
+          maximale : {roundTemperature(cityDataCurrent.main.temp_max)}°C.
         </li>
         <li>
-          Soleil : levé {convertUnix(cityData.sys.sunrise, cityData.timezone)},
-          couché : à {convertUnix(cityData.sys.sunset, cityData.timezone)}.
+          Soleil : levé{" "}
+          {convertUnix(cityDataCurrent.sys.sunrise, cityDataCurrent.timezone)},
+          couché : à{" "}
+          {convertUnix(cityDataCurrent.sys.sunset, cityDataCurrent.timezone)}.
           Ensoleillement :{" "}
           <strong>
-            {sunshineCalculator(cityData.sys.sunrise, cityData.sys.sunset)}
+            {sunshineCalculator(
+              cityDataCurrent.sys.sunrise,
+              cityDataCurrent.sys.sunset
+            )}
           </strong>
         </li>
       </ul>
