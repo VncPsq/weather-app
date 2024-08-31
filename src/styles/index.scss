@@ -2,7 +2,6 @@
 @import "../components/WrapperCards/WrapperCards.scss";
 
 /* Global css */
-
 * {
   padding: 0;
   margin: 0;
@@ -32,4 +31,37 @@ body {
   border-radius: 1rem;
   text-align: center;
   background-color: variables.$default-color;
+}
+
+h1 {
+  font-size: 1.8rem;
+  line-height: 150%;
+}
+
+h2 {
+  font-size: 1.4rem;
+  line-height: 150%;
+}
+
+h3 {
+  font-size: 1.2rem;
+  line-height: 150%;
+}
+
+p, summary {
+  font-size: 1rem;
+  line-height: 150%;
+}
+
+summary {
+  margin: 0.8rem 0;
+  padding: 0.8rem;
+  text-align: left;
+  background-color: variables.$secondary-bgcolor;
+  border-radius: 1rem;
+}
+
+details {
+  text-align: left;
+  
 }
