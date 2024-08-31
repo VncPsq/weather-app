@@ -49,6 +49,12 @@ h3 {
   line-height: 150%;
 }
 
+h4 {
+  font-size: 1rem;
+  line-height: 150%;
+  margin: 1rem 0;
+}
+
 p,
 summary {
   font-size: 1rem;
@@ -90,6 +96,37 @@ details {
     img {
       width: 2rem;
       margin-left: auto;
+    }
+  }
+}
+
+.wrapperTable {
+  overflow-x: scroll;
+
+  table {
+    font-size: 12px;
+    color: #333333;
+    width: 100%;
+    border-width: 1px;
+    border-color: variables.$secondary-bgcolor;
+    border-collapse: collapse;
+
+    th {
+      font-size: 12px;
+      background-color: variables.$secondary-bgcolor;
+      padding: 8px;
+      text-align: left;
+    }
+    tr {
+      background-color: variables.$table-bgcolor;
+    }
+    td {
+      font-size: 12px;
+      padding: 8px;
+
+      img {
+        width: 2rem;
+      }
     }
   }
 }
