@@ -1,6 +1,12 @@
 .wrapperCards {
-  padding: 2rem;
+  padding: 1rem;
   margin: 1rem 0;
   border: 1px solid variables.$primary-bgcolor;
-  
+}
+
+/* Media Queries desktop */
+@media screen and (min-width: 768px) {
+  #wrapperCards {
+    padding: 2rem;
+  }
 }

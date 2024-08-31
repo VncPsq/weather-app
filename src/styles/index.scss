@@ -26,9 +26,8 @@ body {
 
 #root {
   width: 90%;
-  max-width: 768px;
   margin: 2rem auto;
-  padding: 2rem;
+  padding: 1rem;
   border-radius: 1rem;
   text-align: center;
   background-color: variables.$default-color;
@@ -48,6 +47,12 @@ h2 {
 h3 {
   font-size: 1.2rem;
   line-height: 150%;
+}
+
+h4 {
+  font-size: 1rem;
+  line-height: 150%;
+  margin: 1rem 0;
 }
 
 p,
@@ -75,6 +80,7 @@ details[open] > summary::before {
 }
 
 details {
+  list-style-type: none;
   text-align: left;
 
   summary {
@@ -91,5 +97,57 @@ details {
       width: 2rem;
       margin-left: auto;
     }
+  }
+}
+
+.wrapperTable {
+  overflow-x: scroll;
+
+  table {
+    font-size: 12px;
+    color: #333333;
+    width: 100%;
+    border-width: 1px;
+    border-color: variables.$secondary-bgcolor;
+    border-collapse: collapse;
+
+    th {
+      font-size: 12px;
+      background-color: variables.$secondary-bgcolor;
+      padding: 8px;
+      text-align: left;
+    }
+    tr {
+      background-color: variables.$table-bgcolor;
+    }
+    td {
+      font-size: 12px;
+      padding: 8px;
+
+      img {
+        width: 2rem;
+      }
+    }
+  }
+}
+
+/* hack */
+.d-sm-none {
+  display: none;
+}
+
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
+/* Media Queries desktop */
+@media screen and (min-width: 768px) {
+  #root {
+    max-width: 768px;
+    padding: 2rem;
+  }
+
+  .d-sm-none {
+    display: block;
   }
 }
