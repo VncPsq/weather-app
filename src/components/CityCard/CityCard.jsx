@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { convertUnix, sunshineCalculator } from "../../services/timeConverter";
 import roundTemperature from "../../services/roundTemperature";
@@ -32,7 +33,7 @@ export default function CityCard({ name }) {
   ) : (
     <details>
       <summary>
-        <strong>{name}</strong>
+        <strong>{cityData.name}</strong>
         <img
           src={`https://openweathermap.org/img/wn/${cityData.weather[0].icon}@2x.png`}
           alt=""
@@ -62,3 +63,7 @@ export default function CityCard({ name }) {
     </details>
   );
 }
+
+CityCard.propTypes = {
+  name: PropTypes.string,
+};
