@@ -26,9 +26,8 @@ body {
 
 #root {
   width: 90%;
-  max-width: 768px;
   margin: 2rem auto;
-  padding: 2rem;
+  padding: 1rem;
   border-radius: 1rem;
   text-align: center;
   background-color: variables.$default-color;
@@ -75,6 +74,7 @@ details[open] > summary::before {
 }
 
 details {
+  list-style-type: none;
   text-align: left;
 
   summary {
@@ -91,5 +91,26 @@ details {
       width: 2rem;
       margin-left: auto;
     }
+  }
+}
+
+/* hack */
+.d-sm-none {
+  display: none;
+}
+
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
+/* Media Queries desktop */
+@media screen and (min-width: 768px) {
+  #root {
+    max-width: 768px;
+    padding: 2rem;
+  }
+
+  .d-sm-none {
+    display: block;
   }
 }

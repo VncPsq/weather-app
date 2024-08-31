@@ -32,13 +32,15 @@ export default function CityCard({ name }) {
     <p>Chargement...</p>
   ) : (
     <details>
-      <summary>
+      <summary className="overflow-x-hidden">
         <strong>{cityData.name}</strong>
         <img
           src={`https://openweathermap.org/img/wn/${cityData.weather[0].icon}@2x.png`}
           alt=""
         />
-        | {roundTemperature(cityData.main.temp)} °C
+        <span className="d-sm-none">
+          | {roundTemperature(cityData.main.temp)} °C
+        </span>
       </summary>
       <ul>
         <li>
