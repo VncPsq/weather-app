@@ -56,6 +56,14 @@ summary {
   line-height: 150%;
 }
 
+ul {
+  margin-left: 1rem;
+
+  li {
+    margin: 0.5rem 0;
+  }
+}
+
 details > summary::before {
   content: "▶️";
   margin-right: 1rem;

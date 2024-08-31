@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
+import { convertUnix, sunshineCalculator } from "../../services/timeConverter";
+import roundTemperature from "../../services/roundTemperature";
 
 export default function CityCard({ name }) {
   const [cityData, setCityData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-
-  console.info("coucou" + cityData.name);
 
   useEffect(() => {
     fetch(
@@ -32,24 +32,32 @@ export default function CityCard({ name }) {
   ) : (
     <details>
       <summary>
-        {name}
+        <strong>{name}</strong>
         <img
           src={`https://openweathermap.org/img/wn/${cityData.weather[0].icon}@2x.png`}
           alt=""
         />
-        | {Math.floor(cityData.main.temp)} °C
+        | {roundTemperature(cityData.main.temp)} °C
       </summary>
       <ul>
         <li>
-          Conditions météorologiques : <strong>{cityData.weather[0].description}</strong>.
+          Conditions météorologiques :{" "}
+          <strong>{cityData.weather[0].description}</strong>.
         </li>
-        Aujourd&apos;hui, le ciel de {name} est{" "}
-        <strong>{cityData.weather[0].description}</strong>. La température est
-        de{" "}
-        <strong>
-          19.8 °C, la minimale étant de 18.3°C et la maximale étant de 20.56°C.
-        </strong>
-        . Le soleil se lèvera à HH:MM et se couchera à HH:MM.{" "}
+        <li>
+          Température :{" "}
+          <strong>{roundTemperature(cityData.main.temp)} °C</strong>, minimale :{" "}
+          {roundTemperature(cityData.main.temp_min)}°C, maximale :{" "}
+          {roundTemperature(cityData.main.temp_max)}°C.
+        </li>
+        <li>
+          Soleil : levé {convertUnix(cityData.sys.sunrise, cityData.timezone)},
+          couché : à {convertUnix(cityData.sys.sunset, cityData.timezone)}.
+          Ensoleillement :{" "}
+          <strong>
+            {sunshineCalculator(cityData.sys.sunrise, cityData.sys.sunset)}
+          </strong>
+        </li>
       </ul>
     </details>
   );
