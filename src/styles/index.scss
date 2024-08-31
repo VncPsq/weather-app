@@ -1,0 +1,95 @@
+@use "variables";
+@import "../components/WrapperCards/WrapperCards.scss";
+
+/* Global css */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: variables.$font-text;
+}
+
+body {
+  background: linear-gradient(
+    330deg,
+    variables.$primary-bgcolor,
+    variables.$secondary-bgcolor
+  );
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0;
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+#root {
+  width: 90%;
+  max-width: 768px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  background-color: variables.$default-color;
+  height: min-content;
+}
+
+h1 {
+  font-size: 1.8rem;
+  line-height: 150%;
+}
+
+h2 {
+  font-size: 1.4rem;
+  line-height: 150%;
+}
+
+h3 {
+  font-size: 1.2rem;
+  line-height: 150%;
+}
+
+p,
+summary {
+  font-size: 1rem;
+  line-height: 150%;
+}
+
+ul {
+  margin-left: 1rem;
+
+  li {
+    margin: 0.5rem 0;
+  }
+}
+
+details > summary::before {
+  content: "▶️";
+  margin-right: 1rem;
+}
+
+details[open] > summary::before {
+  content: "🔽";
+  margin-right: 1rem;
+}
+
+details {
+  text-align: left;
+
+  summary {
+    margin: 0.8rem 0;
+    padding: 0.8rem;
+    text-align: left;
+    background-color: variables.$secondary-bgcolor;
+    border-radius: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    img {
+      width: 2rem;
+      margin-left: auto;
+    }
+  }
+}
