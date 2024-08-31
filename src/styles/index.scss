@@ -1,0 +1,32 @@
+@use "variables";
+
+/* Global css */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: variables.$font-text;
+}
+
+body {
+  background: linear-gradient(
+    330deg,
+    variables.$primary-bgcolor,
+    variables.$secondary-bgcolor
+  );
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+}
