@@ -7,8 +7,10 @@ export function SelectProvider({ children }) {
   const [selectCity, setSelectCity] = useState("");
   const [favoritesCities, setFavoritesCities] = useState([]);
 
+  // catch selected city
   const handlerOnChange = (e) => setSelectCity(e.target.value);
 
+  // store selected city on submit 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
 
