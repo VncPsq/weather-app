@@ -85,28 +85,31 @@ export default function CityCard({ name }) {
       <h4>Les prévisions pour demain</h4>
       <div className="wrapperTable">
         <table border="1">
-          <tr>
-            <th>Heure</th>
-            <th>Température</th>
-            <th>Ciel</th>
-            <th>Pluie</th>
-          </tr>
-
-          {cityDataForecast.list.map((time) => (
-            <tr key={time.dt_txt}>
-              <td>{time.dt_txt.slice(11, 16)}</td>
-              <td>{roundTemperature(time.main.temp)} °C </td>
-              <td>
-                {
-                  <img
-                    src={`https://openweathermap.org/img/wn/${time.weather[0].icon}@2x.png`}
-                    alt={time.weather[0].description}
-                  />
-                }
-              </td>
-              <td>{time.pop * 100}%</td>
+          <thead>
+            <tr>
+              <th>Heure</th>
+              <th>Température</th>
+              <th>Ciel</th>
+              <th>Pluie</th>
             </tr>
-          ))}
+          </thead>
+          <tbody>
+            {cityDataForecast.list.map((time) => (
+              <tr key={time.dt_txt}>
+                <td>{time.dt_txt.slice(11, 16)}</td>
+                <td>{roundTemperature(time.main.temp)} °C </td>
+                <td>
+                  {
+                    <img
+                      src={`https://openweathermap.org/img/wn/${time.weather[0].icon}@2x.png`}
+                      alt={time.weather[0].description}
+                    />
+                  }
+                </td>
+                <td>{time.pop * 100}%</td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
     </details>
