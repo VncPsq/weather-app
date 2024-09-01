@@ -7,13 +7,32 @@ export function SelectProvider({ children }) {
   const [selectCity, setSelectCity] = useState("");
   const [favoritesCities, setFavoritesCities] = useState([]);
 
-
   const handlerOnChange = (e) => setSelectCity(e.target.value);
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
+
     if (selectCity && !favoritesCities.includes(selectCity)) {
-      setFavoritesCities([...favoritesCities, selectCity]);
+      try {
+        // const response = await fetch("https://backend.com/favoritescities", {
+        //   method: "POST",
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //   },
+        //   body: JSON.stringify({ cityName: selectCity }),
+        // });
+
+        // if (!response.ok) {
+        //   throw new Error("Failed to save the city");
+        // }
+
+        // const result = await response.json();
+        // console.log("City saved:", result);
+
+        setFavoritesCities([...favoritesCities, selectCity]);
+      } catch (error) {
+        console.error("Error during city submission:", error);
+      }
     }
   };
 

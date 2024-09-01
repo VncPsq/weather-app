@@ -106,7 +106,7 @@ export default function CityCard({ name }) {
                     />
                   }
                 </td>
-                <td>{time.pop * 100}%</td>
+                <td>{Math.round(time.pop * 100)}%</td>
               </tr>
             ))}
           </tbody>
