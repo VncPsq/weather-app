@@ -71,7 +71,7 @@ export default function CityCard({ name }) {
         <li>
           Soleil : levé{" "}
           {convertUnix(cityDataCurrent.sys.sunrise, cityDataCurrent.timezone)},
-          couché : à{" "}
+          couché :{" "}
           {convertUnix(cityDataCurrent.sys.sunset, cityDataCurrent.timezone)}.
           Ensoleillement :{" "}
           <strong>
@@ -80,6 +80,7 @@ export default function CityCard({ name }) {
               cityDataCurrent.sys.sunset
             )}
           </strong>
+          .
         </li>
       </ul>
       <h4>Les prévisions pour demain</h4>

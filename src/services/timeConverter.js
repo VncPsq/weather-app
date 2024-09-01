@@ -8,6 +8,7 @@ export function convertUnix(timestamp, timeZoneOffset) {
     .padStart(2, "0")}`;
 }
 
+// Calculation for sunshite time
 export function sunshineCalculator(sunriseStamp, sunsetStamp) {
   const sunshineStamp = (sunsetStamp - sunriseStamp) * 1000; // milisec
   const sunshineMinutes = Math.round((sunshineStamp / (1000 * 60)) % 60); // minutes
