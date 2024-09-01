@@ -1,0 +1,19 @@
+form {
+  margin: 1rem 0;
+  row-gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  input {
+    width: 80%;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    text-align: center;
+    border: 1px solid variables.$primary-bgcolor;
+  }
+  button {
+    background-color: variables.$secondary-bgcolor;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.8rem;
+  }
+}

@@ -1,5 +1,7 @@
 @use "variables";
 @import "../components/WrapperCards/WrapperCards.scss";
+@import "../components/SearchBar/SearchBar.scss";
+
 
 /* Global css */
 * {
@@ -69,18 +71,7 @@ ul {
   }
 }
 
-details > summary::before {
-  content: "▶️";
-  margin-right: 1rem;
-}
-
-details[open] > summary::before {
-  content: "🔽";
-  margin-right: 1rem;
-}
-
 details {
-  list-style-type: none;
   text-align: left;
 
   summary {
@@ -92,7 +83,7 @@ details {
     cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     img {
       width: 2rem;
       margin-left: auto;
